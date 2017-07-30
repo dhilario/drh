@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'DRH Test',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+task deploylocal() << {
+    println "Copy from ${buildDir}/libs into ${tomcatHome}/webapps"
+    copy{
+        from "${buildDir}/libs"
+        into "${tomcatHome}/webapps"
+        include '*.war'
+    }
+}
