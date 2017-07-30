@@ -15,11 +15,13 @@ repositories {
     mavenCentral()
 }
 
-task deploylocal() << {
-    println "Copy from ${buildDir}/libs into ${tomcatHome}/webapps"
-    copy{
-        from "${buildDir}/libs"
-        into "${tomcatHome}/webapps"
-        include '*.war'
+task deploylocal() {
+    doLast {
+        println "Copy from ${buildDir}/libs into ${tomcatHome}/webapps"
+        copy {
+            from "${buildDir}/libs"
+            into "${tomcatHome}/webapps"
+            include '*.war'
+        }
     }
 }

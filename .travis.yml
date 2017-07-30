@@ -8,9 +8,6 @@ branches:
   - gh-pages
   - /.*/
 
-env:
-  - _JAVA_OPTIONS='-Xmx500m'
-
 matrix:
   include:
     - jdk: oraclejdk8 # JDK 1.8.0_131-b11 or newer
